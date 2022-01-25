@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ManageCustomerFormController {
 
@@ -23,7 +24,12 @@ public class ManageCustomerFormController {
     public Button btnSaveCustomer;
     public TableView<?> tblCustomers;
 
-    public void initialize(){
+    public void initialize()throws IOException {
+        btnAdd.setDisable(true);
+        btnRemove.setDisable(true);
+        txtTelephone.textProperty().addListener((observable, oldValue, newValue) -> {
+            btnAdd.setDisable(!txtTelephone.getText().matches("\\d{3}-\\d{7}"));
+        });
 
     }
 
