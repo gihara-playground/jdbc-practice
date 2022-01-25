@@ -27,9 +27,13 @@ public class ManageCustomerFormController {
     public void initialize()throws IOException {
         btnAdd.setDisable(true);
         btnRemove.setDisable(true);
-        txtTelephone.textProperty().addListener((observable, oldValue, newValue) -> {
-            btnAdd.setDisable(!txtTelephone.getText().matches("\\d{3}-\\d{7}"));
-        });
+
+//        txtTelephone.textProperty().addListener((observable, oldValue, newValue) -> {
+//            btnAdd.setDisable(!txtTelephone.getText().matches("\\d{3}-\\d{7}"));
+//        });
+        txtTelephone.textProperty().addListener((observable, oldValue, newValue) ->
+                btnAdd.setDisable(!newValue.trim().matches("\\d{3}-\\d{7}"))
+        );
 
     }
 
