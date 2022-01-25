@@ -3,6 +3,9 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class ManageCustomerFormController {
 
@@ -32,20 +35,23 @@ public class ManageCustomerFormController {
 
     @FXML
     void btnBrowse_OnAction(ActionEvent event) {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Images","*.jpeg", "*.jpg", "*.gif", "*.png", "*.bmp"));
+        File file = fileChooser.showOpenDialog(btnBrowse.getScene().getWindow());
+        txtPicture.setText(file != null ? file.getAbsolutePath() : "");
     }
-
 
     @FXML
     void btnNewCustomer_OnAction(ActionEvent event) {
 
     }
 
-
     @FXML
     void btnRemove_OnAction(ActionEvent event) {
 
     }
+
 
 
     @FXML
@@ -60,3 +66,5 @@ public class ManageCustomerFormController {
     }
 
 }
+
+
